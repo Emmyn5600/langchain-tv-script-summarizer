@@ -22,9 +22,16 @@ This is a web app that summarizes the movie script using GPT-4. It is built usin
 * Interact with the APIs
 * To close the server, enter `Ctrl + C` in your terminal
 
+
+# Screenshot
+![langchainbefore](https://github.com/Emmyn5600/langchain-tv-script-summarizer/assets/55635977/32ca6930-c80f-446d-9665-4e98d66af291)
+
+![langchainafter](https://github.com/Emmyn5600/langchain-tv-script-summarizer/assets/55635977/3f1ed97f-1610-4e93-8ae3-6ef85b56a281)
+
+
 # Live link
 
-[![Deploy to Vercel](https://deploy.cyclic.app/button.svg)]()
+[![Deploy to Vercel](https://deploy.cyclic.app/button.svg)](https://langchain-tv-script-summarizer.vercel.app/)
 
 
 
