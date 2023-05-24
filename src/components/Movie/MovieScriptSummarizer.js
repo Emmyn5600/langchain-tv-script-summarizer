@@ -14,11 +14,13 @@ const SummaryComponent = () => {
     setScript(event.target.value);
   };
 
+  const apikey = process.env.REACT_APP_OPEN_AI_API_KEY;
+
   const handleSummarizeClick = async () => {
     setIsLoading(true);
 
     const model = new OpenAI({
-      openAIApiKey: process.env.REACT_APP_OPEN_AI_API_KEY,
+      openAIApiKey: 1,
       temperature: 0,
     });
 
@@ -38,7 +40,8 @@ const SummaryComponent = () => {
       setSummary(res.text);
       setError(null);
     } catch (error) {
-      setError(error);
+      setError(error.message);
+      setSummary("");
     } finally {
       setIsLoading(false);
     }
@@ -79,7 +82,7 @@ const SummaryComponent = () => {
             Well, that wasn't supposed to happen...
             <br />
             <span className="font-satoshi font-normal text-gray-700">
-              {error?.data?.error}
+              {error.message}
             </span>
           </p>
         ) : (
