@@ -20,7 +20,7 @@ const SummaryComponent = () => {
     setIsLoading(true);
 
     const model = new OpenAI({
-      openAIApiKey: 1,
+      openAIApiKey: apikey,
       temperature: 0,
     });
 
