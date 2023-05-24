@@ -18,7 +18,7 @@ const SummaryComponent = () => {
     setIsLoading(true);
 
     const model = new OpenAI({
-      openAIApiKey: process.env.openAIApiKey,
+      openAIApiKey: process.env.REACT_APP_OPEN_AI_API_KEY,
       temperature: 0,
     });
 
