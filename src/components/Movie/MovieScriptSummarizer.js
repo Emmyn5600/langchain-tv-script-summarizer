@@ -19,6 +19,12 @@ const SummaryComponent = () => {
   const handleSummarizeClick = async () => {
     setIsLoading(true);
 
+    if (!apikey) {
+      setError("OpenAI API key not found. Please check your configuration.");
+      setIsLoading(false);
+      return;
+    }
+
     const model = new OpenAI({
       openAIApiKey: apikey,
       temperature: 0,
