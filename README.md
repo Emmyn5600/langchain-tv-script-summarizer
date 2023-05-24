@@ -14,7 +14,7 @@ This is a web app that summarizes the movie script using GPT-4. It is built usin
 
 * Open your terminal - Windows: `Win + R`, then type `cmd` | Mac: `Command + space`, then type `Terminal`
 * Navigate to a directory of your choosing using the `cd` command
-* Run this command in your OS terminal: `https://github.com/Emmyn5600/movie-script-summarizer.git` to get a copy of the project
+* Run this command in your OS terminal: `https://github.com/Emmyn5600/langchain-tv-script-summarizer.git` to get a copy of the project
 * Navigate to the project's directory using the `cd` command
 * Install dependencies by running `npm install`
 * Execute `npm start` to fire up the server
@@ -24,7 +24,7 @@ This is a web app that summarizes the movie script using GPT-4. It is built usin
 
 # Live link
 
-[![Deploy to Vercel](https://deploy.cyclic.app/button.svg)](https://movie-script-summarizer.vercel.app/)
+[![Deploy to Vercel](https://deploy.cyclic.app/button.svg)]()
 
 
 
