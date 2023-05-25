@@ -7,6 +7,7 @@ import SummaryResult from "./SummaryResult";
 const SummaryComponent = () => {
   const [script, setScript] = useState("");
   const [summary, setSummary] = useState("");
+  const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -45,12 +46,32 @@ const SummaryComponent = () => {
       });
       setSummary(res.text);
       setError(null);
+      // Extract characters from the script
+      const extractedCharacters = extractCharacters(res.text);
+      setCharacters(extractedCharacters);
     } catch (error) {
       setError(error.message);
       setSummary("");
+      setCharacters([]);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // Function to extract characters from the script
+  const extractCharacters = (text) => {
+    // Perform named entity recognition (NER) to extract entities
+    // You can use a library like spaCy or a custom NER model for this task
+    // Here, we'll use a simple regex pattern to find capitalized words
+    const characterRegex = /[A-Z][a-zA-Z]+/g;
+    const matches = text.match(characterRegex);
+
+    if (matches) {
+      // Remove duplicates and return the extracted characters
+      return [...new Set(matches)];
+    }
+
+    return [];
   };
 
   return (
@@ -78,9 +99,13 @@ const SummaryComponent = () => {
           </button>
         </div>
       </div>
-
       {/* Display Result */}
-      <SummaryResult isLoading={isLoading} error={error} summary={summary} />
+      <SummaryResult
+        isLoading={isLoading}
+        error={error}
+        summary={summary}
+        characters={characters}
+      />
     </section>
   );
 };
