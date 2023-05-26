@@ -10,6 +10,7 @@ const SummaryComponent = () => {
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isValid, setIsValid] = useState(false);
 
   const handleInputChange = (event) => {
     setScript(event.target.value);
@@ -18,6 +19,10 @@ const SummaryComponent = () => {
   const apikey = process.env.REACT_APP_OPEN_AI_API_KEY;
 
   const handleSummarizeClick = async () => {
+    if (script.length === 0) {
+      setIsValid(true);
+      setIsLoading(false);
+    }
     setIsLoading(true);
 
     if (!apikey) {
@@ -59,7 +64,7 @@ const SummaryComponent = () => {
   };
 
   const extractNamesFromScript = (text) => {
-    const namePattern = /\b[A-Z][a-z]{2,}\b/g
+    const namePattern = /\b[A-Z][a-z]{2,}\b/g;
     const names = text.match(namePattern) || [];
     const uniqueNames = [...new Set(names)];
     return uniqueNames;
@@ -90,13 +95,18 @@ const SummaryComponent = () => {
           </button>
         </div>
       </div>
-      {/* Display Result */}
-      <SummaryResult
-        isLoading={isLoading}
-        error={error}
-        summary={summary}
-        characters={characters}
-      />
+      {isValid ? (
+        <p className="text-red-700 text-opacity-100 p-3">
+          Please enter the valid script{" "}
+        </p>
+      ) : (
+        <SummaryResult
+          isLoading={isLoading}
+          error={error}
+          summary={summary}
+          characters={characters}
+        />
+      )}
     </section>
   );
 };
