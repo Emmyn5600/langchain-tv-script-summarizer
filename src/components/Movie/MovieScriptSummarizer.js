@@ -14,14 +14,21 @@ const SummaryComponent = () => {
 
   const handleInputChange = (event) => {
     setScript(event.target.value);
+    setIsValid(false);
+  };
+
+  const handleTextAreaBlur = () => {
+    if (script.trim() === "") {
+      setIsValid(true);
+    }
   };
 
   const apikey = process.env.REACT_APP_OPEN_AI_API_KEY;
 
   const handleSummarizeClick = async () => {
-    if (script.length === 0) {
+    if (script.trim() === "") {
       setIsValid(true);
-      setIsLoading(false);
+      return;
     }
     setIsLoading(true);
 
@@ -84,6 +91,7 @@ const SummaryComponent = () => {
           placeholder="Enter movie script here..."
           value={script}
           onChange={handleInputChange}
+          onBlur={handleTextAreaBlur}
         />
 
         <div className="mr-2">
@@ -95,11 +103,12 @@ const SummaryComponent = () => {
           </button>
         </div>
       </div>
-      {isValid ? (
+      {isValid && (
         <p className="text-red-700 text-opacity-100 p-3">
           Please enter the valid script{" "}
         </p>
-      ) : (
+      )}
+      {!isValid && (
         <SummaryResult
           isLoading={isLoading}
           error={error}
