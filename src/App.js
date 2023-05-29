@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "./components/Layout/Layout";
-import SummaryComponent from "./components/Movie/MovieScriptSummarizer";
+// import SummaryComponent from "./components/Movie/MovieScriptSummarizer";
+import ScriptSender from "./components/Movie/ScriptSenderSummary";
 import "./App.css";
 
 const App = () => {
@@ -10,7 +11,8 @@ const App = () => {
         <div className="gradient" />
       </div>
       <div className="app">
-        <SummaryComponent />
+        {/* <SummaryComponent /> */}
+        <ScriptSender />
       </div>
     </Layout>
   );

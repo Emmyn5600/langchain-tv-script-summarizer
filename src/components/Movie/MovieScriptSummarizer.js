@@ -71,7 +71,7 @@ const SummaryComponent = () => {
   };
 
   const extractNamesFromScript = (text) => {
-    const namePattern = /\b[A-Z][A-Za-z]{3,}\b/g;
+    const namePattern = /\b(?!(?:After|FARGO|Meanwhile|Officer|Minnesota)\b)[A-Z][A-Za-z]{3,}\b/g;
     const names = text.match(namePattern) || [];
     const uniqueNames = [...new Set(names)];
     return uniqueNames;
